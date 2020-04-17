@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signin, authenticate, isAuthenticated } from "../auth";
-
+import signinImage from '../utils/images/signin-image.jpg'
 const Signin = () => {
     const [values, setValues] = useState({
         email: "ryan@gmail.com",
@@ -37,13 +37,13 @@ const Signin = () => {
     };
 
     const signUpForm = () => (
-        <form>
-            <div className="form-group">
-                <label className="text-muted">Email</label>
-                <input
+        <>
+         {/* <form>
+             <div className="form-group">
+                 <label className="text-muted">Email</label>
+                 <input
                     onChange={handleChange("email")}
                     type="email"
-                    className="form-control"
                     value={email}
                 />
             </div>
@@ -53,14 +53,61 @@ const Signin = () => {
                 <input
                     onChange={handleChange("password")}
                     type="password"
-                    className="form-control"
                     value={password}
                 />
             </div>
             <button onClick={clickSubmit} className="btn btn-primary">
                 Submit
             </button>
-        </form>
+        </form> */}
+                <section style={{marginTop: '4%'}} class="sign-in">
+                <div class="container">
+                    <div class="signin-content">
+                        <div class="signin-image">
+                            <figure><img src={signinImage} alt="sing up image"/></figure>
+                            <a href="#" class="signup-image-link">Create an account</a>
+                        </div>
+    
+                        <div class="signin-form">
+                            <h2 class="form-title">Sign up</h2>
+                            <form method="POST" class="register-form" id="login-form">
+                                <div class="form-group">
+                                    <label for="your_name"><i class="fa fa-envelope"></i></label>
+                                    <input
+                                    onChange={handleChange("email")}
+                                    type="email"
+                                    value={email}
+                                    placeholder="Your email"/>
+                                </div>
+                                <div class="form-group">
+                                    <label for="your_pass"><i class="fa fa-lock"></i></label>
+                                    <input
+                                    onChange={handleChange("password")}
+                                    type="password"
+                                    value={password} 
+                                    placeholder="Password"/>
+                                </div>
+                                <div class="form-group">
+                                    <input type="checkbox" name="remember-me" id="remember-me" class="agree-term" />
+                                    <label for="remember-me" class="label-agree-term"><span><span></span></span>Remember me</label>
+                                </div>
+                                <div class="form-group form-button">
+                                    <input onClick={clickSubmit} type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
+                                </div>
+                            </form>
+                            <div class="social-login">
+                                <span class="social-label">Or login with</span>
+                                <ul class="socials">
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                    <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            </>
     );
 
     const showError = () => (
@@ -93,16 +140,22 @@ const Signin = () => {
     };
 
     return (
-        <Layout
-            title="Signin"
-            description="Signin to Node React E-commerce App"
-            className="container col-md-8 offset-md-2"
-        >
-            {showLoading()}
-            {showError()}
-            {signUpForm()}
-            {redirectUser()}
-        </Layout>
+        // <Layout
+        //     title="Signin"
+        //     description="Signin to Node React E-commerce App"
+        //     className="container col-md-8 offset-md-2"
+        // >
+        //     {showLoading()}
+        //     {showError()}
+        //     {signUpForm()}
+        //     {redirectUser()}
+        // </Layout>
+        <>
+        {showLoading()}
+        {showError()}
+        {signUpForm()}
+        {redirectUser()}
+    </>
     );
 };
 
