@@ -46,7 +46,7 @@ const Signin = () => {
                 <img src={signinImage} alt="sing up image" />
               </figure>
               <Link to='/signup' class="signup-image-link">
-                Create an account
+                Don't have an account ?
               </Link>
             </div>
 
