@@ -56,7 +56,7 @@ const Signup = () => {
                                 </div>
                                 <div class="form-group">
                                     <label for="pass"><i class="fa fa-lock"></i></label>
-                                    <input onChange={handleChange('password')} type="password" className="form-control" value={password} name="pass" id="pass" placeholder="Password"/>
+                                    <input onChange={handleChange('password')} type="password" value={password} name="pass" id="pass" placeholder="Password"/>
                                 </div>
                                 <div class="form-group">
                                     <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
@@ -69,7 +69,7 @@ const Signup = () => {
                         </div>
                         <div class="signup-image">
                             <figure><img src={signupImage} alt="sing up image"/></figure>
-                            <a href="#" class="signup-image-link">I am already member</a>
+                            <Link to="/signin" class="signup-image-link">I am already member</Link>
                         </div>
                     </div>
                 </div>
