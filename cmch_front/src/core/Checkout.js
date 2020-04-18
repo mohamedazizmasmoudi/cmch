@@ -55,17 +55,41 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     };
 
     let deliveryAddress = data.address;
-
     const buy = () => {
         setData({ loading: true });
         const jwt = JSON.parse(localStorage.jwt)
         const user_id = jwt.user._id
+<<<<<<< HEAD
         console.log(jwt)
         const token = jwt.token
         const orderItems = localStorage.cart
         // Todo fetch order / save to db / clear card / redirect
         createOrder(user_id,token,orderItems)
         setData({ loading: false });
+=======
+        const token = jwt.token
+        const orderItems = localStorage.cart
+        // Todo fetch order / save to db / clear card / redirect
+        const createOrderData = {
+            products: products,
+            // transaction_id: response.transaction.id,
+            // amount: response.transaction.amount,
+            // address: deliveryAddress
+        };
+        createOrder(user_id,token,createOrderData)
+        .then(response => {
+            emptyCart(() => {
+                setRun(!run); // run useEffect in parent Cart
+                console.log('payment success and empty cart');
+                setData({
+                    loading: false,
+                    success: true
+                });
+            });
+        })
+        setData({ loading: false });
+
+>>>>>>> ac110f19ddaaad4713e62ce8250d425ee7553fec
     };
 
     const showDropIn = () => (

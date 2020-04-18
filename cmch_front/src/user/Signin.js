@@ -54,7 +54,7 @@ const Signin = () => {
               <h2 class="form-title">Sign up</h2>
               <form method="POST" class="register-form" id="login-form">
                 <div class="form-group">
-                  <label for="your_name">
+                  <label className="label-signup" for="your_name">
                     <i class="fa fa-envelope"></i>
                   </label>
                   <input
@@ -65,7 +65,7 @@ const Signin = () => {
                   />
                 </div>
                 <div class="form-group">
-                  <label for="your_pass">
+                  <label className="label-signup" for="your_pass">
                     <i class="fa fa-lock"></i>
                   </label>
                   <input
@@ -75,17 +75,14 @@ const Signin = () => {
                     placeholder="Password"
                   />
                 </div>
-                <div class="form-group">
+                <div  class="form-group">
                   <input
                     type="checkbox"
                     name="remember-me"
                     id="remember-me"
                     class="agree-term"
                   />
-                  <label for="remember-me" class="label-agree-term">
-                    <span>
-                      <span></span>
-                    </span>
+                  <label className="label-signup" style={{top: -3}} for="remember-me" class="label-agree-term">
                     Remember me
                   </label>
                 </div>
