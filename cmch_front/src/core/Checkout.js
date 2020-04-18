@@ -69,6 +69,16 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
             // address: deliveryAddress
         };
         createOrder(user_id,token,createOrderData)
+        .then(response => {
+            emptyCart(() => {
+                setRun(!run); // run useEffect in parent Cart
+                console.log('payment success and empty cart');
+                setData({
+                    loading: false,
+                    success: true
+                });
+            });
+        })
         setData({ loading: false });
 
     };
