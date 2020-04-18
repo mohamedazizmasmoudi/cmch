@@ -1,0 +1,48 @@
+
+.heyy{
+    list-style: none;
+    margin: 0 20px;
+    font-size: 17px;
+    transform: scale(0.95);
+}
+.testt{
+    margin: 0px 65px;
+    text-decoration: none;
+    
+}
+.testt a {
+    text-decoration: none;
+    color: #67B116;
+    text-decoration: none;
+
+}
+li:hover{
+    transform: scale(1);
+    text-decoration: none;
+}
+li a{
+    text-decoration: none;
+}
+.shop{
+    position: absolute;
+    right: 10px;
+}
+nav{
+    justify-content: center;
+    margin-top: 25px;
+}
+@media screen and (min-width: 200px) and (max-width: 700px) {
+    .heyy {
+        list-style: none;
+        margin: 0 15px;
+        font-size: 17px;
+        transform: scale(0.95);
+    }
+    .testt {
+        margin: 0px 6px;
+        position: relative;
+        text-decoration: none;
+        left: -100px;
+        top: 1px;
+    }
+}
