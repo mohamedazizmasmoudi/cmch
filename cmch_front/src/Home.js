@@ -4,10 +4,13 @@ import Menu from "./core/Menu";
 import Select from 'react-select'
 import "./css/select.css"
 
-import img1 from './utils/images/section2-1.png'
-import img2 from './utils/images/section2-2.png'
-import img3 from './utils/images/section2-3.png'
-import img4 from './utils/images/section3-1.png'
+import img1 from './utils/img/section2-1.png'
+import img2 from './utils/img/section2-2.png'
+import img3 from './utils/img/section2-3.png'
+import img4 from './utils/img/section3-1.png'
+
+import headerBg from './utils/img/header.png'
+
 import { Link } from "react-router-dom";
 
 
@@ -16,10 +19,6 @@ const options = [
     { value: 'ariana', label: 'Ariana' },
     { value: 'manouba', label: 'Manouba' }
   ]
-  
-
-
-const headerBg = require("./utils/images/header.png")
 
 const styles = {
     header: {
