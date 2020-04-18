@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const sellerSchema = new mongoose.Schema(
     {
@@ -11,6 +12,10 @@ const sellerSchema = new mongoose.Schema(
         },role: {
             type: Number,
             default: 0
+        }
+        ,jobcategory: {
+            type: ObjectId,
+            ref: "Category",
         },
     },
     { timestamps: true }
