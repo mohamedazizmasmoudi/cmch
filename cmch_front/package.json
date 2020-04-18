@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@material-ui/core": "^4.9.10",
     "braintree-web": "^3.45.0",
     "braintree-web-drop-in-react": "^1.0.7",
     "compression": "^1.7.4",
