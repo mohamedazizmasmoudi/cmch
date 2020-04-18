@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signup } from "../auth";
 
 import Radio from "@material-ui/core/Radio";
 import RadioGroup from "@material-ui/core/RadioGroup";
 
-import signupImage from "../utils/images/signup-image.jpg";
+import signupImage from "../utils/img/signup-image.jpg";
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -201,6 +201,7 @@ const Signup = () => {
                     </a>
                   </span>
                 </div>
+                <Link to='/'>
                 <div class="form-group form-button">
                   <input
                     onClick={clickSubmit}
@@ -211,6 +212,7 @@ const Signup = () => {
                     value="Register"
                   />
                 </div>
+                </Link>
               </form>
             </div>
             <div class="signup-image">
@@ -244,7 +246,9 @@ const Signup = () => {
       New account is created. Please <Link to="/signin">Signin</Link>
     </div>
   );
-
+  const redirectUser = () => {
+      return <Redirect to="/signin" />;
+  };
   return (
     // <Layout
     //     title="Signup"

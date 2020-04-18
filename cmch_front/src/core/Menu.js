@@ -14,23 +14,27 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
   <>
-    <header className="header">
       <nav style={{ display: "flex" }}>
         <ul style={{ display: "flex" }}>
+          
           <Link to="/contact">
-            <li className="testt heyy">
+            <li className="nav-item nav-item-centred">
               <a style={{ textDecoration: "none" }} href="">
                 اتصل بنا
               </a>
             </li>
           </Link>
-          <li className="testt heyy">
+          
+          <Link to='/'>
+          <li className="nav-item ">
             <a style={{ textDecoration: "none" }} href="">
               عن الشركة
             </a>
           </li>
+          </Link>
+
           <Link to="/">
-            <li className="testt heyy">
+            <li className="nav-item nav-item-centred">
               <a style={{ textDecoration: "none" }} href="">
                 الرئيسية
               </a>
@@ -40,12 +44,12 @@ const Menu = ({ history }) => (
         <div className="shop">
           <ul style={{ display: "flex" }}>
             <Link to="/user/dashboard">
-              <li className="heyy">
+              <li className="nav-item ">
                 <i style={{ color: "black" }} className="fa fa-user-o"></i>
               </li>
             </Link>
             <Link to="/cart">
-              <li className="heyy">
+              <li className="nav-item ">
                 <i style={{ color: "black" }} className="fa fa-cart-plus"></i>
               </li>
             </Link>
@@ -53,7 +57,7 @@ const Menu = ({ history }) => (
               (isAuthenticated().type === "seller" ||
                 isAuthenticated().type === "supplier") && (
                 <Link to="/admin/dashboard">
-                  <li className="heyy">
+                  <li className="nav-item">
                     <i style={{ color: "black" }} className="fa fa-user"></i>
                   </li>
                 </Link>
@@ -66,7 +70,7 @@ const Menu = ({ history }) => (
                       history.push("/signin");
                     })
                   }
-                  className="heyy"
+                  className="nav-item"
                 >
                   <i style={{ color: "black" }} className="fa fa-sign-out"></i>
                 </li>
@@ -75,7 +79,6 @@ const Menu = ({ history }) => (
           </ul>
         </div>
       </nav>
-    </header>
   </>
 );
 
