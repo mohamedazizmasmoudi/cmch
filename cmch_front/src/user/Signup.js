@@ -217,7 +217,7 @@ const Signup = () => {
                   />
                 </div>
                 <Link to="/">
-                  <div style={{ marginTop: 50 }} class="form-group form-button">
+                  <div style={{ marginTop: 50, width: '100%' }} class="form-group form-button">
                     <input
                       onClick={clickSubmit}
                       type="submit"

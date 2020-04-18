@@ -51,7 +51,7 @@ const Signin = () => {
             </div>
 
             <div class="signin-form">
-              <h2 style={{position: 'relative',right: '-60%'}} class="form-title">تسجيل الدخول</h2>
+              <h2 style={{position: 'relative',right: '-40%'}} class="form-title">تسجيل الدخول</h2>
               <form method="POST" class="register-form" id="login-form">
                 <div class="form-group">
                   <label className="label-signup" for="your_name">
