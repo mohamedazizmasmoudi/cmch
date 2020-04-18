@@ -11,6 +11,10 @@ const sellerSchema = new mongoose.Schema(
         },role: {
             type: Number,
             default: 0
+        },job: {
+            type: ObjectId,
+            ref: "Category",
+            required: true
         },
     },
     { timestamps: true }
