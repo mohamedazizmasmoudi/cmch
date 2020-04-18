@@ -60,7 +60,7 @@ const Signup = () => {
               <h2 class="form-title">Sign up</h2>
               <form method="POST" class="register-form" id="register-form">
                 <div class="form-group">
-                  <label for="name">
+                  <label className="label-signup" for="name">
                     <i class="fa fa-user"></i>
                   </label>
                   <input
@@ -71,7 +71,7 @@ const Signup = () => {
                   />
                 </div>
                 <div class="form-group">
-                  <label for="email">
+                  <label className="label-signup" for="email">
                     <i class="fa fa-envelope"></i>
                   </label>
                   <input
@@ -112,7 +112,7 @@ const Signup = () => {
                   </RadioGroup >
                 </div>
                 <div class="form-group">
-                  <label for="pass">
+                  <label className="label-signup" for="pass">
                     <i class="fa fa-lock"></i>
                   </label>
                   <input
