@@ -11,6 +11,7 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 exports.signup = (req, res) => {
   var category = "";
   console.log("req.body", req.body);
+  
   if (req.body.category == "seller") category = new Saller(req.body);
   else if (req.body.category == "buyer") category = new Buyer(req.body);
   else if (req.body.category == "supplier") category = new Supplier(req.body);

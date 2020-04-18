@@ -16,17 +16,23 @@ const Signup = () => {
     category: "",
     error: "",
     photo: '',
+    job: '',
     formData: '',
     success: false,
   });
 
-  const { name, email, password, category, success, error,formData } = values;
+  const { name, email, password, category, success, error, job, formData } = values;
 
   const [checked, setChecked] = useState(true);
 
   const handleChecked = (type) => {
     setChecked({ checked: !checked });
     setValues({ ...values, category: type });
+  };
+
+  const handleCheckedJob = (type) => {
+    setChecked({ checked: !checked });
+    setValues({ ...values, job: type });
   };
 
   const handleChangePhoto = name => event => {
@@ -42,7 +48,7 @@ const Signup = () => {
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    signup({ name, email, password, category }).then((data) => {
+    signup({ name, email, password, category, job }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -53,6 +59,7 @@ const Signup = () => {
           category: "",
           password: "",
           error: "",
+          job: '',
           success: true,
         });
       }
@@ -117,9 +124,30 @@ const Signup = () => {
                       type="radio"
                       value="type2"
                       inputProps={{ "aria-label": "primary checkbox" }}
-                      onChange={() => handleChecked("supplier")}
+                      onChange={() => handleCheckedJob("supplier")}
                     />
                   </RadioGroup>
+                  {category === 'seller' &&
+                  <RadioGroup
+                    style={{ flexDirection: "row", alignItems: "center" }}
+                  >
+                    <span for="category">khadhar</span>
+                    <Radio
+                      name="type"
+                      type="radio"
+                      value="type"
+                      inputProps={{ "aria-label": "primary checkbox" }}
+                      onChange={() => handleCheckedJob("khadhar")}
+                    />
+                    <span for="category">_3atar</span>
+                    <Radio
+                      name="type"
+                      type="radio"
+                      value="type1"
+                      inputProps={{ "aria-label": "primary checkbox" }}
+                      onChange={() => handleCheckedJob("_3atar")}
+                    />
+                  </RadioGroup>}
                 </div>
                 <div class="form-group">
                   <label className="label-signup" for="pass">
