@@ -59,7 +59,7 @@ const Menu = ({ history }) => (
                 </li>
             )}
 
-            {isAuthenticated() && isAuthenticated().type === "seller" && (
+            {isAuthenticated() && (isAuthenticated().type === "seller" || isAuthenticated().type === "supplier")&& (
                 <li className="nav-item">
                     <Link
                         className="nav-link"

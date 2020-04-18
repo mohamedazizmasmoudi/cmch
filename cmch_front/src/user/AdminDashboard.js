@@ -13,26 +13,33 @@ const AdminDashboard = () => {
             <div className="card">
                 <h4 className="card-header">Admin Links</h4>
                 <ul className="list-group">
+                {isAuthenticated().type ==="seller" ?
+
                     <li className="list-group-item">
                         <Link className="nav-link" to="/create/category">
                             Create Category
                         </Link>
-                    </li>
+                    </li>:null}
+                    {isAuthenticated().type ==="seller" ?
+
                     <li className="list-group-item">
                         <Link className="nav-link" to="/create/product">
                             Create Product
                         </Link>
-                    </li>
+                    </li>:null}
+                    {isAuthenticated().type ==="supplier" ?
                     <li className="list-group-item">
                         <Link className="nav-link" to="/admin/orders">
                             View Orders
                         </Link>
-                    </li>
+                    </li>:null}
+                    {isAuthenticated().type ==="seller" ?
+
                     <li className="list-group-item">
                         <Link className="nav-link" to="/admin/products">
                             Manage Products
                         </Link>
-                    </li>
+                    </li>:null}
                 </ul>
             </div>
         );
