@@ -34,6 +34,10 @@ const userSchema = new mongoose.Schema(
             type: Array,
             default: []
         },
+        photo: {
+            data: Buffer,
+            contentType: String
+        },
         seller: {
             type: ObjectId,
             ref: "Seller",
