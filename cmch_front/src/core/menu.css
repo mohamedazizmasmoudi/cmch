@@ -1,19 +1,23 @@
 
-.heyy{
-    list-style: none;
-    margin: 0 20px;
-    font-size: 17px;
-    transform: scale(0.95);
-}
-.header{
-    box-shadow: 1px 0.5px 1px rgb(124, 124, 124);
-}
-.testt{
+
+.nav-item{
     margin: 0px 65px;
     text-decoration: none;
+    list-style: none;
+    margin: 0 20px;
+    font-size: 16px;
+    list-style: none;
+    font-size: 17px;
+    transform: scale(0.95);
     
 }
-.testt a {
+
+.nav-item-centred{
+    margin: 0 10vw;
+ }
+
+ 
+.nav-item a {
     text-decoration: none;
     color: #67B116;
     text-decoration: none;
@@ -32,7 +36,7 @@ li a{
 }
 nav{
     justify-content: center;
-    margin-top: 25px;
+    padding-top: 25px;
 }
 @media screen and (min-width: 200px) and (max-width: 700px) {
     .heyy {

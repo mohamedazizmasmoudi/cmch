@@ -1,0 +1,36 @@
+.select__control{
+    background-color: #67B116 !important;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 80px !important;
+}
+
+.select__single-value{
+    color: white !important;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.select__indicator-separator{
+    display: none;
+}
+
+.select__menu{
+    width: 80% !important;
+    text-align: right;
+    font-size: 1.2vw ;
+}
+
+.css-6q0nyr-Svg{
+    stroke-width: 2px !important;
+    color: white;
+    margin-left: 20px;
+}
+
+.address-input{
+    background-color: transparent;
+    border-radius: 80px ;
+    border-color: grey;
+    height: 60px;
+
+}
