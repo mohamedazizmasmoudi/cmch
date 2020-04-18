@@ -14,7 +14,7 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
   <>
-      <nav style={{ display: "flex" }}>
+      <nav className='header' style={{ display: "flex" }}>
         <ul style={{ display: "flex" }}>
           
           <Link to="/contact">
@@ -51,6 +51,11 @@ const Menu = ({ history }) => (
             <Link to="/cart">
               <li className="nav-item ">
                 <i style={{ color: "black" }} className="fa fa-cart-plus"></i>
+              </li>
+            </Link>
+            <Link to="/shop">
+              <li className="nav-item ">
+                <i style={{ color: "black" }} className="fa fa-shopping-cart"></i>
               </li>
             </Link>
             {isAuthenticated() &&

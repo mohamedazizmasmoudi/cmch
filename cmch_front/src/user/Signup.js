@@ -17,6 +17,7 @@ const Signup = () => {
     error: "",
     photo: "",
     job: "",
+    gender: '',
     formData: "",
     success: false,
   });
@@ -29,6 +30,7 @@ const Signup = () => {
     success,
     error,
     job,
+    gender,
     formData,
   } = values;
 
@@ -43,11 +45,10 @@ const Signup = () => {
     setChecked({ checked: !checked });
     setValues({ ...values, job: type });
   };
-
-  const handleChangePhoto = (name) => (event) => {
-    const value = name === "photo" ? event.target.files[0] : event.target.value;
-    FormData.set(name, value);
-    setValues({ ...values, [name]: value });
+  const handleCheckedGender = (type) => {
+    setChecked({ checked: !checked });
+    setValues({ ...values, gender: type });
+    localStorage.setItem('gender',type)
   };
 
   const handleChange = (name) => (event) => {
@@ -57,7 +58,7 @@ const Signup = () => {
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    signup({ name, email, password, category, job }).then((data) => {
+    signup({ name, email, password, category, job, gender }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -69,6 +70,7 @@ const Signup = () => {
           password: "",
           error: "",
           job: "",
+          gender: '',
           success: true,
         });
       }
@@ -113,6 +115,7 @@ const Signup = () => {
                   />
                 </div>
                 <div class="form-group">
+                  <label style={{float: 'right'}}>: النوع</label>
                   <RadioGroup
                     style={{ flexDirection: "row", alignItems: "center" }}
                   >
@@ -164,6 +167,29 @@ const Signup = () => {
                     </RadioGroup>
                   )}
                 </div>
+                <div style={{paddingBottom: 20}}>
+                <label style={{float: 'right'}}>: الجنس</label>
+                  <RadioGroup
+                    style={{ flexDirection: "row", alignItems: "center" }}
+                  >
+                    <span for="category">الذكر</span>
+                    <Radio
+                      name="type"
+                      type="radio"
+                      value="type"
+                      inputProps={{ "aria-label": "primary checkbox" }}
+                      onChange={() => handleCheckedGender("male")}
+                    />
+                    <span for="category">أنثى</span>
+                    <Radio
+                      name="type"
+                      type="radio"
+                      value="type1"
+                      inputProps={{ "aria-label": "primary checkbox" }}
+                      onChange={() => handleCheckedGender("female")}
+                    />
+                  </RadioGroup>
+                </div>
                 <div class="form-group">
                   <label className="label-signup" for="pass">
                     <i class="fa fa-lock"></i>
@@ -188,16 +214,6 @@ const Signup = () => {
                     placeholder="موقعك"
                   />
                 </div>
-                {/* <div className="form-group">
-                  <label className="btn btn-secondary">
-                    <input
-                      onChange={handleChangePhoto("photo")}
-                      type="file"
-                      name="photo"
-                      accept="image/*"
-                    />
-                  </label>
-                </div> */}
                 <div style={{ float: "right" }} class="form-group">
                   <span
                     style={{ top: -3 }}
@@ -217,7 +233,10 @@ const Signup = () => {
                   />
                 </div>
                 <Link to="/">
-                  <div style={{ marginTop: 50, width: '100%' }} class="form-group form-button">
+                  <div
+                    style={{ marginTop: 50, width: "100%" }}
+                    class="form-group form-button"
+                  >
                     <input
                       onClick={clickSubmit}
                       type="submit"

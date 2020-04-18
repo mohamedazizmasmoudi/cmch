@@ -169,7 +169,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .clear {
     clear: both; }
-  
+  .header{
+    box-shadow: 0.2px 0.2px 5px rgb(161, 161, 161);
+  }
   body {
     font-size: 13px;
     line-height: 1.8;
