@@ -526,7 +526,11 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     margin-left: 110px;
     margin-right: 20px;
     margin-top: 10px; }
-  
+    @media screen and (min-width: 200px) and (max-width: 700px) {
+      .signin-image img{
+        display: none;
+      }
+    }
   @media screen and (max-width: 1200px) {
     .container {
       width: calc( 100% - 30px);
@@ -566,7 +570,26 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
     .signup-form, .signup-image, .signin-form, .signin-image {
       width: auto; }
-  
+      @media screen and (min-width: 200px) and (max-width: 700px) {
+        .signin-image {
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: -25px;
+      }
+        .signin-content {
+          padding-top: 55px;
+          padding-bottom: 20px;
+      }
+        .signup-content {
+          padding: 55px 0;
+      }
+        .signup-image{
+          margin-top: 0px;
+        }
+        .signup-image img{
+          display: none;
+        }
+      }
     .social-login {
       justify-content: center;
       -moz-justify-content: center;
