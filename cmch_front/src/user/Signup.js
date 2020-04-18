@@ -124,7 +124,7 @@ const Signup = () => {
                       type="radio"
                       value="type2"
                       inputProps={{ "aria-label": "primary checkbox" }}
-                      onChange={() => handleCheckedJob("supplier")}
+                      onChange={() => handleChecked("supplier")}
                     />
                   </RadioGroup>
                   {category === 'seller' &&
