@@ -75,17 +75,14 @@ const Signin = () => {
                     placeholder="Password"
                   />
                 </div>
-                <div class="form-group">
+                <div  class="form-group">
                   <input
                     type="checkbox"
                     name="remember-me"
                     id="remember-me"
                     class="agree-term"
                   />
-                  <label for="remember-me" class="label-agree-term">
-                    <span>
-                      <span></span>
-                    </span>
+                  <label style={{top: -3}} for="remember-me" class="label-agree-term">
                     Remember me
                   </label>
                 </div>
