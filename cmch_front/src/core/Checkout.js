@@ -59,7 +59,8 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     const buy = () => {
         setData({ loading: true });
         const jwt = JSON.parse(localStorage.jwt)
-        const user_id = jwt.user.id
+        const user_id = jwt.user._id
+        console.log(jwt)
         const token = jwt.token
         const orderItems = localStorage.cart
         // Todo fetch order / save to db / clear card / redirect
