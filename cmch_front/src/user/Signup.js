@@ -9,11 +9,12 @@ const Signup = () => {
     name: "",
     email: "",
     password: "",
+    category: "",
     error: "",
     success: false,
   });
 
-  const { name, email, password, success, error } = values;
+  const { name, email, password,category, success, error } = values;
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -22,7 +23,7 @@ const Signup = () => {
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    signup({ name, email, password }).then((data) => {
+    signup({ name, email, password ,  category }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -30,6 +31,7 @@ const Signup = () => {
           ...values,
           name: "",
           email: "",
+          category:"",
           password: "",
           error: "",
           success: true,
@@ -68,6 +70,19 @@ const Signup = () => {
                     name="email"
                     id="email"
                     placeholder="Your Email"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="category">
+                    <i class="fa fa-envelope"></i>
+                  </label>
+                  <input
+                    onChange={handleChange("category")}
+                    type="email"
+                    value={category}
+                    name="category"
+                    id="category"
+                    placeholder="Your category"
                   />
                 </div>
                 <div class="form-group">
