@@ -4,15 +4,11 @@ import Menu from "./core/Menu";
 import Select from 'react-select'
 import "./css/select.css"
 
-
-
-const img1 =  require("./utils/images/section2-1.png")
-
-const img2 =  require("./utils/images/section2-2.png")
-
-const img3 =  require("./utils/images/section2-3.png")
-
-const img4 =  require("./utils/images/section3-1.png")
+import img1 from './utils/images/section2-1.png'
+import img2 from './utils/images/section2-2.png'
+import img3 from './utils/images/section2-3.png'
+import img4 from './utils/images/section3-1.png'
+import { Link } from "react-router-dom";
 
 
 const options = [
@@ -72,11 +68,11 @@ const bntStyle = {
                     هل ترغب بالتسويق لمنتجات متجرك مجانًا ؟ والوصول الى مئات آلاف المستخدمين الذين يستخدمون تطبيع نعناع 
                     لطلب كل ما يحتاجونه من خضار وألبان وغيرها ؟ هل ترغب بمضاعفة مبيعاتك وزيادة أرباحك ؟
                 </h3>
-
+                <Link to='/signup'>
                 <button className="d-flex justify-content-center btn btn-default" style={bntStyle}>
                      اضف متجرك
                  </button>
-
+                 </Link>
               </div>
           </div>
       )
@@ -145,7 +141,7 @@ const Home =  () => {
         <div>
             <Header>
                 <Menu/>
-                <div className="header-content" style={{margin:"50px 0"}}>
+                <div className="header-content" style={{margin:"145px 0"}}>
                 <h1 className="text-center header-title" style={{fontSize:"5vw",marginBottom:"40px"}}>
                     شد دارك قضيتك تجيك لدارك#
                 </h1>

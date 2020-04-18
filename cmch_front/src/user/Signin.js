@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Redirect, Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signin, authenticate, isAuthenticated } from "../auth";
-import signinImage from "../utils/images/signin-image.jpg";
+import signinImage from "../utils/img/signin-image.jpg";
 const Signin = () => {
   const [values, setValues] = useState({
     email: "ryan@gmail.com",
@@ -87,6 +87,7 @@ const Signin = () => {
                   </label>
                 </div>
                 <div class="form-group form-button">
+                <Link to='/'>
                   <input
                     onClick={clickSubmit}
                     type="submit"
@@ -95,6 +96,7 @@ const Signin = () => {
                     class="form-submit"
                     value="Log in"
                   />
+                </Link>
                 </div>
               </form>
               <div class="social-login">
@@ -143,9 +145,9 @@ const Signin = () => {
   const redirectUser = () => {
     if (redirectToReferrer) {
       if (user && user.role === 1) {
-        return <Redirect to="/admin/dashboard" />;
+        return <Redirect to="/" />;
       } else {
-        return <Redirect to="/user/dashboard" />;
+        return <Redirect to="/" />;
       }
     }
     if (isAuthenticated()) {
