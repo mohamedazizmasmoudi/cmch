@@ -55,10 +55,22 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
     };
 
     let deliveryAddress = data.address;
-
     const buy = () => {
         setData({ loading: true });
+        const jwt = JSON.parse(localStorage.jwt)
+        const user_id = jwt.user._id
+        const token = jwt.token
+        const orderItems = localStorage.cart
         // Todo fetch order / save to db / clear card / redirect
+        const createOrderData = {
+            products: products,
+            // transaction_id: response.transaction.id,
+            // amount: response.transaction.amount,
+            // address: deliveryAddress
+        };
+        createOrder(user_id,token,createOrderData)
+        setData({ loading: false });
+
     };
 
     const showDropIn = () => (
