@@ -125,6 +125,19 @@ const Signup = () => {
                   />
                 </div>
                 <div class="form-group">
+                  <label className="label-signup" for="pass">
+                    <i class="fa fa-thumb-tack"></i>
+                  </label>
+                  <input
+                    // onChange={handleChange("password")}
+                    type="text"
+                    // value={password}
+                    name="pass"
+                    id="pass"
+                    placeholder="location"
+                  />
+                </div>
+                <div class="form-group">
                   <input
                     type="checkbox"
                     name="agree-term"
