@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signup } from "../auth";
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
 
 import signupImage from "../utils/images/signup-image.jpg";
 
@@ -15,10 +15,12 @@ const Signup = () => {
     password: "",
     category: "",
     error: "",
+    photo: '',
+    formData: '',
     success: false,
   });
 
-  const { name, email, password, category, success, error } = values;
+  const { name, email, password, category, success, error,formData } = values;
 
   const [checked, setChecked] = useState(true);
 
@@ -26,6 +28,12 @@ const Signup = () => {
     setChecked({ checked: !checked });
     setValues({ ...values, category: type });
   };
+
+  const handleChangePhoto = name => event => {
+    const value = name === 'photo' ? event.target.files[0] : event.target.value;
+    FormData.set(name, value);
+    setValues({ ...values, [name]: value });
+};
 
   const handleChange = (name) => (event) => {
     setValues({ ...values, error: false, [name]: event.target.value });
@@ -84,32 +92,34 @@ const Signup = () => {
                   />
                 </div>
                 <div class="form-group">
-                  <RadioGroup style={{    flexDirection: 'row',alignItems: 'center'}} >
+                  <RadioGroup
+                    style={{ flexDirection: "row", alignItems: "center" }}
+                  >
                     <span for="category">Seller</span>
                     <Radio
-                      name='type'
-                      type='radio'
-                      value='type'
+                      name="type"
+                      type="radio"
+                      value="type"
                       inputProps={{ "aria-label": "primary checkbox" }}
                       onChange={() => handleChecked("seller")}
                     />
                     <span for="category">Buyer</span>
                     <Radio
-                      name='type'
-                      type='radio'
-                      value='type1'
+                      name="type"
+                      type="radio"
+                      value="type1"
                       inputProps={{ "aria-label": "primary checkbox" }}
                       onChange={() => handleChecked("buyer")}
                     />
                     <span for="category">Suplier</span>
                     <Radio
-                      name='type'
-                      type='radio'
-                      value='type2'
+                      name="type"
+                      type="radio"
+                      value="type2"
                       inputProps={{ "aria-label": "primary checkbox" }}
                       onChange={() => handleChecked("supplier")}
                     />
-                  </RadioGroup >
+                  </RadioGroup>
                 </div>
                 <div class="form-group">
                   <label className="label-signup" for="pass">
@@ -123,6 +133,27 @@ const Signup = () => {
                     id="pass"
                     placeholder="Password"
                   />
+                </div>
+                <div class="form-group">
+                  <label className="label-signup" for="pass">
+                    <i class="fa fa-thumb-tack"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="pass"
+                    id="pass"
+                    placeholder="location"
+                  />
+                </div>
+                <div className="form-group">
+                  <label className="btn btn-secondary">
+                    <input
+                      onChange={handleChangePhoto("photo")}
+                      type="file"
+                      name="photo"
+                      accept="image/*"
+                    />
+                  </label>
                 </div>
                 <div class="form-group">
                   <input
