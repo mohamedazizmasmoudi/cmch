@@ -11,7 +11,7 @@ const ShowProducts = props =>{
     useEffect(()=>{
         const sellerId = props.match.params.sellerId
         getSellerProduct(sellerId).then(
-            data => {setProduct(data)}
+            data => {setProduct(data.product)}
         )
     },[])
 
@@ -20,15 +20,12 @@ const ShowProducts = props =>{
              <div className="col-8">
                     <h2 className="mb-4">Products</h2>
                     <div className="row">
-<<<<<<< HEAD
                         {console.log(product)}
-=======
->>>>>>> 5fcebfd743f56f91599a727786ec19da2efa9f12
-                        {/* {product.map((product, i) => (
+                        {Object.keys(product).map((key, i) => (
                             <div key={i} className="col-4 mb-3">
-                                <Card product={product} />
+                                <Card product={product[key]} />
                             </div>
-                        ))} */}
+                        ))}
                     </div>
                     <hr />
                     {/* {loadMoreButton()} */}
