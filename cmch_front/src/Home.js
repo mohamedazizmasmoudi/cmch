@@ -65,7 +65,7 @@ const bntStyle = {
               <div className="container">
                 <h1 className="text-center" style={{fontSize:"4vw",color:"white"}}>هل أنت صاحب متجر؟ </h1>
                 <h3 className="section-description text-center" style={{color:"white", marginTop:"50px"}}>
-                    هل ترغب بالتسويق لمنتجات متجرك مجانًا ؟ والوصول الى مئات آلاف المستخدمين الذين يستخدمون تطبيع نعناع 
+                    هل ترغب بالتسويق لمنتجات متجرك مجانًا ؟ والوصول الى مئات آلاف المستخدمين الذين يستخدمون تطبيقنا  
                     لطلب كل ما يحتاجونه من خضار وألبان وغيرها ؟ هل ترغب بمضاعفة مبيعاتك وزيادة أرباحك ؟
                 </h3>
                 <Link to='/signup'>
@@ -118,10 +118,10 @@ const bntStyle = {
                             <div class="col-md-6" style={{padding:"35px"}}>
                                 <h1 className="text-right" style={{fontSize:"4vw"}}>مميزات التطبيق   </h1>
                                 <h3 className="section-description text-right" style={{marginTop:"20px",lineHeight:"2"}}>  
-                                    خدمة نعناع للتوصيل هي نتاج جهد شبابي سعودي 
+                                     أن هذه الخدمة للتوصيل هي نتاج جهد شبابي تونسي 
                                     يسعى لتطوير منظومة شراء وتوصيل المقاضي للمنازل 
                                     من خلال كادر مدرَّب على الشراء واختيار أفضل الخضار والفواكه. 
-                                    وتتميز نعناع بسرعة التوصيل وجودة الخدمة المقدمة.
+                                    وتتميز بسرعة التوصيل وجودة الخدمة المقدمة.
                                 </h3>
                      
                             </div>
