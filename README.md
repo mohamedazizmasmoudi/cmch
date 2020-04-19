@@ -19,4 +19,5 @@ To run the App
 - nodeJs
 - MongoDB
 
-*PS: you'll find the design of our platform in Adobe XD file*
+
+### *PS: you'll find the design of our platform in Adobe XD file*
