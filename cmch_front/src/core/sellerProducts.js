@@ -20,7 +20,10 @@ const ShowProducts = props =>{
              <div className="col-8">
                     <h2 className="mb-4">Products</h2>
                     <div className="row">
+<<<<<<< HEAD
                         {console.log(product)}
+=======
+>>>>>>> 5fcebfd743f56f91599a727786ec19da2efa9f12
                         {/* {product.map((product, i) => (
                             <div key={i} className="col-4 mb-3">
                                 <Card product={product} />
