@@ -36,8 +36,17 @@ const Home = () => {
     }, []);
 
     return (
+<<<<<<< HEAD
+        <Layout
+            title=""
+            description="Node React E-commerce App"
+            className="container-fluid"
+        >
+            
+=======
         <>
         <Menu />
+>>>>>>> 9366361c5befe4744802c2598ad70bddcc6c726f
             <Search />
             <h2 className="mb-4">New Arrivals</h2>
             <div className="container row">

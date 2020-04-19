@@ -9,11 +9,12 @@ const sellerSchema = new mongoose.Schema(
             required: true,
             maxlength: 32,
             unique: true
-        },role: {
+        },
+        role: {
             type: Number,
             default: 0
-        }
-        ,jobcategory: {
+        },
+        jobcategory: {
             type: ObjectId,
             ref: "Category",
         },
