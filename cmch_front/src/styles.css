@@ -179,7 +179,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     background: #f8f8f8;
     font-weight: 400;
     font-family: Poppins; }
-  
+  img:hover{
+    cursor: pointer;
+  }
   .containerrr {
     width: 900px;
     background: #fff;
