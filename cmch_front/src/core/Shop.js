@@ -3,12 +3,12 @@ import Layout from "./Layout";
 import Card from "./Card";
 import { getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
-import RadioBox from "./RadioBox";
-import { prices } from "./fixedPrices";
+import {Link} from "react-router-dom";
+
 
 const Shop = () => {
     const [myFilters, setMyFilters] = useState({
-        filters: { category: [], price: [] }
+        filters: { category: []}
     });
     const [categories, setCategories] = useState([]);
     const [error, setError] = useState(false);
@@ -75,26 +75,10 @@ const Shop = () => {
         // console.log("SHOP", filters, filterBy);
         const newFilters = { ...myFilters };
         newFilters.filters[filterBy] = filters;
-
-        if (filterBy === "price") {
-            let priceValues = handlePrice(filters);
-            newFilters.filters[filterBy] = priceValues;
-        }
         loadFilteredResults(myFilters.filters);
         setMyFilters(newFilters);
     };
 
-    const handlePrice = value => {
-        const data = prices;
-        let array = [];
-
-        for (let key in data) {
-            if (data[key]._id === parseInt(value)) {
-                array = data[key].array;
-            }
-        }
-        return array;
-    };
 
     return (
         <Layout
@@ -113,25 +97,16 @@ const Shop = () => {
                             }
                         />
                     </ul>
-
-                    <h4>Filter by price range</h4>
-                    <div>
-                        <RadioBox
-                            prices={prices}
-                            handleFilters={filters =>
-                                handleFilters(filters, "price")
-                            }
-                        />
-                    </div>
                 </div>
 
                 <div className="col-8">
-                    <h2 className="mb-4">Products</h2>
+                    <h2 className="mb-4">Sellers</h2>
                     <div className="row">
                         {filteredResults.map((seller, i) => (
                             <div key={i} className="col-4 mb-3">
                                 <div className="card ">
                                     <div className="card-header card-header-1 ">{seller.name}</div>
+                                    <Link to={`/shop/seller/${seller._id}`}>check seller</Link>
                                 </div>
                             </div>
                         ))}

@@ -1,6 +1,16 @@
 import { API } from "../config";
 import queryString from "query-string";
 
+export const getSellerProduct = sellerId => {
+    return fetch(`${API}/shop/seller/${sellerId}`, {
+        method: "GET"
+    })
+        .then(response => {
+            return response.json();
+        })
+        .catch(err => console.log(err));
+}
+
 export const getProducts = sortBy => {
     return fetch(`${API}/products?sortBy=${sortBy}&order=desc&limit=6`, {
         method: "GET"
