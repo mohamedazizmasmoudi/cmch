@@ -39,19 +39,19 @@ const Signin = () => {
   const signUpForm = () => (
     <>
       <section style={{ marginTop: "4%" }} class="sign-in">
-        <div class="container">
+        <div class="containerrr">
           <div class="signin-content">
             <div class="signin-image">
               <figure>
                 <img src={signinImage} alt="sing up image" />
               </figure>
-              <Link to='/signup' class="signup-image-link">
-                Don't have an account ?
+              <Link to="/signup" class="signup-image-link">
+                لا تملك حساب؟
               </Link>
             </div>
 
             <div class="signin-form">
-              <h2 class="form-title">Sign up</h2>
+              <h2 style={{position: 'relative',right: '-40%'}} class="form-title">تسجيل الدخول</h2>
               <form method="POST" class="register-form" id="login-form">
                 <div class="form-group">
                   <label className="label-signup" for="your_name">
@@ -75,32 +75,37 @@ const Signin = () => {
                     placeholder="Password"
                   />
                 </div>
-                <div  class="form-group">
+                <div style={{float: 'right',marginBottom: 20}} class="form-group">
+                  
+                  <label
+                    className="label-signup"
+                    style={{ top: -3 }}
+                    for="remember-me"
+                    class="label-agree-term"
+                  >
+                    تذكرنى
+                  </label>
                   <input
                     type="checkbox"
                     name="remember-me"
                     id="remember-me"
                     class="agree-term"
                   />
-                  <label className="label-signup" style={{top: -3}} for="remember-me" class="label-agree-term">
-                    Remember me
-                  </label>
                 </div>
-                <div class="form-group form-button">
-                <Link to='/'>
-                  <input
-                    onClick={clickSubmit}
-                    type="submit"
-                    name="signin"
-                    id="signin"
-                    class="form-submit"
-                    value="Log in"
-                  />
-                </Link>
+                <div style={{marginTop: 60}} class="form-group form-button">
+                  <Link to="/">
+                    <input
+                      onClick={clickSubmit}
+                      type="submit"
+                      name="signin"
+                      id="signin"
+                      class="form-submit"
+                      value="تسجيل الدخول"
+                    />
+                  </Link>
                 </div>
               </form>
               <div class="social-login">
-                <span class="social-label">Or login with</span>
                 <ul class="socials">
                   <li>
                     <a href="#">
@@ -118,6 +123,7 @@ const Signin = () => {
                     </a>
                   </li>
                 </ul>
+                <span class="social-label">أو قم بتسجيل الدخول باستخدام</span>
               </div>
             </div>
           </div>

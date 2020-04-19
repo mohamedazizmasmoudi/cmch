@@ -14,7 +14,7 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
   <>
-      <nav style={{ display: "flex" }}>
+      <nav className='header' style={{ display: "flex" }}>
         <ul style={{ display: "flex" }}>
           
           <Link to="/contact">
@@ -43,25 +43,32 @@ const Menu = ({ history }) => (
         </ul>
         <div className="shop">
           <ul style={{ display: "flex" }}>
-            <Link to="/user/dashboard">
-              <li className="nav-item ">
-                <i style={{ color: "black" }} className="fa fa-user-o"></i>
-              </li>
-            </Link>
+          {isAuthenticated() &&
+              (isAuthenticated().type === "seller" ||
+                isAuthenticated().type === "supplier") && (
+                <Link to="/admin/dashboard">
+                  <li style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} className="nav-item">
+                    <i style={{ color: "black" }} className="fa fa-user-o"></i>
+                    <label>مشرف</label>
+                  </li>
+                </Link>
+              )}
+
             <Link to="/cart">
               <li className="nav-item ">
                 <i style={{ color: "black" }} className="fa fa-cart-plus"></i>
               </li>
             </Link>
-            {isAuthenticated() &&
-              (isAuthenticated().type === "seller" ||
-                isAuthenticated().type === "supplier") && (
-                <Link to="/admin/dashboard">
-                  <li className="nav-item">
-                    <i style={{ color: "black" }} className="fa fa-user"></i>
-                  </li>
-                </Link>
-              )}
+            <Link to="/shop">
+              <li className="nav-item ">
+                <i style={{ color: "black" }} className="fa fa-shopping-cart"></i>
+              </li>
+            </Link>
+            <Link to="/user/dashboard">
+              <li className="nav-item ">
+                <i style={{ color: "black" }} className="fa fa-user"></i>
+              </li>
+            </Link>
             {isAuthenticated() && (
               <Link to="/signin">
                 <li

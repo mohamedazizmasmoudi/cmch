@@ -169,7 +169,9 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .clear {
     clear: both; }
-  
+  .header{
+    box-shadow: 0.2px 0.2px 5px rgb(161, 161, 161);
+  }
   body {
     font-size: 13px;
     line-height: 1.8;
@@ -178,7 +180,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     font-weight: 400;
     font-family: Poppins; }
   
-  /* .container {
+  .containerrr {
     width: 900px;
     background: #fff;
     margin: 0 auto;
@@ -191,7 +193,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
     -moz-border-radius: 20px;
     -webkit-border-radius: 20px;
     -o-border-radius: 20px;
-    -ms-border-radius: 20px; } */
+    -ms-border-radius: 20px; }
   
   .display-flex {
     justify-content: space-between;
@@ -332,7 +334,7 @@ display-flex, .display-flex, .display-flex-center, .signup-content, .signin-cont
   
   .label-signup {
     position: absolute;
-    left: 0;
+    left: 5px;
     top: 50%;
     transform: translateY(-50%);
     -moz-transform: translateY(-50%);
