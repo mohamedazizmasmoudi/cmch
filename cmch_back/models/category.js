@@ -12,7 +12,6 @@ const categorySchema = new mongoose.Schema(
         },seller: {
             type: ObjectId,
             ref: "Seller",
-            required: true
         },
     },
     { timestamps: true }
