@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Link, Redirect } from "react-router-dom";
 import Layout from "../core/Layout";
 import { signup } from "../auth";
 
-import Radio from '@material-ui/core/Radio';
-import RadioGroup from '@material-ui/core/RadioGroup';
+import Radio from "@material-ui/core/Radio";
+import RadioGroup from "@material-ui/core/RadioGroup";
 
-import signupImage from "../utils/images/signup-image.jpg";
+import signupImage from "../utils/img/signup-image.jpg";
 
 const Signup = () => {
   const [values, setValues] = useState({
@@ -15,16 +15,40 @@ const Signup = () => {
     password: "",
     category: "",
     error: "",
+    photo: "",
+    job: "",
+    gender: '',
+    formData: "",
     success: false,
   });
 
-  const { name, email, password, category, success, error } = values;
+  const {
+    name,
+    email,
+    password,
+    category,
+    success,
+    error,
+    job,
+    gender,
+    formData,
+  } = values;
 
   const [checked, setChecked] = useState(true);
 
   const handleChecked = (type) => {
     setChecked({ checked: !checked });
     setValues({ ...values, category: type });
+  };
+
+  const handleCheckedJob = (type) => {
+    setChecked({ checked: !checked });
+    setValues({ ...values, job: type });
+  };
+  const handleCheckedGender = (type) => {
+    setChecked({ checked: !checked });
+    setValues({ ...values, gender: type });
+    localStorage.setItem('gender',type)
   };
 
   const handleChange = (name) => (event) => {
@@ -34,7 +58,7 @@ const Signup = () => {
   const clickSubmit = (event) => {
     event.preventDefault();
     setValues({ ...values, error: false });
-    signup({ name, email, password, category }).then((data) => {
+    signup({ name, email, password, category, job, gender }).then((data) => {
       if (data.error) {
         setValues({ ...values, error: data.error, success: false });
       } else {
@@ -45,6 +69,8 @@ const Signup = () => {
           category: "",
           password: "",
           error: "",
+          job: "",
+          gender: '',
           success: true,
         });
       }
@@ -54,10 +80,15 @@ const Signup = () => {
   const signUpForm = () => (
     <>
       <section style={{ marginTop: "4%" }} class="signup">
-        <div class="container">
+        <div class="containerrr">
           <div class="signup-content">
             <div class="signup-form">
-              <h2 class="form-title">Sign up</h2>
+              <h2
+                class="form-title"
+                style={{ position: "relative", right: "-80%" }}
+              >
+                سجل
+              </h2>
               <form method="POST" class="register-form" id="register-form">
                 <div class="form-group">
                   <label className="label-signup" for="name">
@@ -84,32 +115,80 @@ const Signup = () => {
                   />
                 </div>
                 <div class="form-group">
-                  <RadioGroup style={{    flexDirection: 'row',alignItems: 'center'}} >
-                    <span for="category">Seller</span>
+                  <label style={{float: 'right'}}>: النوع</label>
+                  <RadioGroup
+                    style={{ flexDirection: "row", alignItems: "center" }}
+                  >
+                    <span for="category">تاجر</span>
                     <Radio
-                      name='type'
-                      type='radio'
-                      value='type'
+                      name="type"
+                      type="radio"
+                      value="type"
                       inputProps={{ "aria-label": "primary checkbox" }}
                       onChange={() => handleChecked("seller")}
                     />
-                    <span for="category">Buyer</span>
+                    <span for="category">مشتر</span>
                     <Radio
-                      name='type'
-                      type='radio'
-                      value='type1'
+                      name="type"
+                      type="radio"
+                      value="type1"
                       inputProps={{ "aria-label": "primary checkbox" }}
                       onChange={() => handleChecked("buyer")}
                     />
-                    <span for="category">Suplier</span>
+                    <span for="category">المورد</span>
                     <Radio
-                      name='type'
-                      type='radio'
-                      value='type2'
+                      name="type"
+                      type="radio"
+                      value="type2"
                       inputProps={{ "aria-label": "primary checkbox" }}
                       onChange={() => handleChecked("supplier")}
                     />
-                  </RadioGroup >
+                  </RadioGroup>
+                  {category === "seller" && (
+                    <RadioGroup
+                      style={{ flexDirection: "row", alignItems: "center" }}
+                    >
+                      <span for="category">خضار</span>
+                      <Radio
+                        name="type"
+                        type="radio"
+                        value="type"
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        onChange={() => handleCheckedJob("khadhar")}
+                      />
+                      <span for="category">عطار</span>
+                      <Radio
+                        name="type"
+                        type="radio"
+                        value="type1"
+                        inputProps={{ "aria-label": "primary checkbox" }}
+                        onChange={() => handleCheckedJob("_3atar")}
+                      />
+                    </RadioGroup>
+                  )}
+                </div>
+                <div style={{paddingBottom: 20}}>
+                <label style={{float: 'right'}}>: الجنس</label>
+                  <RadioGroup
+                    style={{ flexDirection: "row", alignItems: "center" }}
+                  >
+                    <span for="category">الذكر</span>
+                    <Radio
+                      name="type"
+                      type="radio"
+                      value="type"
+                      inputProps={{ "aria-label": "primary checkbox" }}
+                      onChange={() => handleCheckedGender("male")}
+                    />
+                    <span for="category">أنثى</span>
+                    <Radio
+                      name="type"
+                      type="radio"
+                      value="type1"
+                      inputProps={{ "aria-label": "primary checkbox" }}
+                      onChange={() => handleCheckedGender("female")}
+                    />
+                  </RadioGroup>
                 </div>
                 <div class="form-group">
                   <label className="label-signup" for="pass">
@@ -125,33 +204,49 @@ const Signup = () => {
                   />
                 </div>
                 <div class="form-group">
+                  <label className="label-signup" for="pass">
+                    <i class="fa fa-thumb-tack"></i>
+                  </label>
+                  <input
+                    type="text"
+                    name="pass"
+                    id="pass"
+                    placeholder="موقعك"
+                  />
+                </div>
+                <div style={{ float: "right" }} class="form-group">
+                  <span
+                    style={{ top: -3 }}
+                    for="agree-term"
+                    class="label-agree-term"
+                  >
+                    أوافق على جميع البيانات{" "}
+                    <a href="#" class="term-service">
+                      الواردة في شروط الخدمة
+                    </a>
+                  </span>
                   <input
                     type="checkbox"
                     name="agree-term"
                     id="agree-term"
                     class="agree-term"
                   />
-                  <span
-                    style={{ top: -3 }}
-                    for="agree-term"
-                    class="label-agree-term"
+                </div>
+                <Link to="/">
+                  <div
+                    style={{ marginTop: 50, width: "100%" }}
+                    class="form-group form-button"
                   >
-                    I agree all statements in{" "}
-                    <a href="#" class="term-service">
-                      Terms of service
-                    </a>
-                  </span>
-                </div>
-                <div class="form-group form-button">
-                  <input
-                    onClick={clickSubmit}
-                    type="submit"
-                    name="signup"
-                    id="signup"
-                    class="form-submit"
-                    value="Register"
-                  />
-                </div>
+                    <input
+                      onClick={clickSubmit}
+                      type="submit"
+                      name="signup"
+                      id="signup"
+                      class="form-submit"
+                      value="تسجيل"
+                    />
+                  </div>
+                </Link>
               </form>
             </div>
             <div class="signup-image">
@@ -159,7 +254,7 @@ const Signup = () => {
                 <img src={signupImage} alt="sing up image" />
               </figure>
               <Link to="/signin" class="signup-image-link">
-                I am already member
+                أنا عضو بالفعل
               </Link>
             </div>
           </div>
@@ -185,7 +280,9 @@ const Signup = () => {
       New account is created. Please <Link to="/signin">Signin</Link>
     </div>
   );
-
+  const redirectUser = () => {
+    return <Redirect to="/signin" />;
+  };
   return (
     // <Layout
     //     title="Signup"

@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const categorySchema = new mongoose.Schema(
     {
@@ -8,7 +9,10 @@ const categorySchema = new mongoose.Schema(
             required: true,
             maxlength: 32,
             unique: true
-        }
+        },seller: {
+            type: ObjectId,
+            ref: "Seller",
+        },
     },
     { timestamps: true }
 );

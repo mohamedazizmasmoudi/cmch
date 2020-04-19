@@ -60,6 +60,7 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
         const jwt = JSON.parse(localStorage.jwt)
         const user_id = jwt.user._id
 <<<<<<< HEAD
+<<<<<<< HEAD
         console.log(jwt)
         const token = jwt.token
         const orderItems = localStorage.cart
@@ -69,7 +70,11 @@ const Checkout = ({ products, setRun = f => f, run = undefined }) => {
 =======
         const token = jwt.token
         const orderItems = localStorage.cart
+=======
+        console.log(jwt)
+>>>>>>> 9366361c5befe4744802c2598ad70bddcc6c726f
         // Todo fetch order / save to db / clear card / redirect
+        const token = jwt.token
         const createOrderData = {
             products: products,
             // transaction_id: response.transaction.id,

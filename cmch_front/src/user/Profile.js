@@ -3,6 +3,7 @@ import Layout from '../core/Layout';
 import { isAuthenticated } from '../auth';
 import { Link, Redirect } from 'react-router-dom';
 import { read, update, updateUser } from './apiUser';
+import Menu from '../core/Menu';
 
 const Profile = ({ match }) => {
     const [values, setValues] = useState({
@@ -61,32 +62,36 @@ const Profile = ({ match }) => {
     };
 
     const profileUpdate = (name, email, password) => (
+        <div style={{position: 'relative',top: '10rem',width:'40%'}} className='container'>
+            <h2 style={{position: 'relative', right: '-24rem'}} className="mb-4">تحديث الملف الشخصي</h2>
+
         <form>
             <div className="form-group">
-                <label className="text-muted">Name</label>
+                <label style={{float: 'right'}} className="text-muted">اسم</label>
                 <input type="text" onChange={handleChange('name')} className="form-control" value={name} />
             </div>
             <div className="form-group">
-                <label className="text-muted">Email</label>
+                <label style={{float: 'right'}} className="text-muted">البريد الإلكتروني</label>
                 <input type="email" onChange={handleChange('email')} className="form-control" value={email} />
             </div>
             <div className="form-group">
-                <label className="text-muted">Password</label>
+                <label style={{float: 'right'}} className="text-muted">كلمه السر</label>
                 <input type="password" onChange={handleChange('password')} className="form-control" value={password} />
             </div>
 
-            <button onClick={clickSubmit} className="btn btn-primary">
-                Submit
+            <button style={{float: 'right'}} onClick={clickSubmit} className="btn btn-primary">
+            إرسال
             </button>
         </form>
+        </div>
     );
 
     return (
-        <Layout title="Profile" description="Update your profile" className="container-fluid">
-            <h2 className="mb-4">Profile update</h2>
+        <>
+        <Menu />
             {profileUpdate(name, email, password)}
             {redirectUser(success)}
-        </Layout>
+        </>
     );
 };
 

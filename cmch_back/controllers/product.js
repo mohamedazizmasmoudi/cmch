@@ -2,6 +2,7 @@ const formidable = require('formidable');
 const _ = require('lodash');
 const fs = require('fs');
 const Product = require('../models/product');
+const Seller =require('../models/seller')
 const { errorHandler } = require('../helpers/dbErrorHandler');
 
 exports.productById = (req, res, next, id) => {
@@ -27,6 +28,7 @@ exports.create = (req, res) => {
     let form = new formidable.IncomingForm();
     form.keepExtensions = true;
     form.parse(req, (err, fields, files) => {
+        console.log(res.req.profile.seller)
         if (err) {
             return res.status(400).json({
                 error: 'Image could not be uploaded'
@@ -56,7 +58,7 @@ exports.create = (req, res) => {
             product.photo.data = fs.readFileSync(files.photo.path);
             product.photo.contentType = files.photo.type;
         }
-
+product.seller=res.req.profile.seller;
         product.save((err, result) => {
             if (err) {
                 console.log('PRODUCT CREATE ERROR ', err);
@@ -194,26 +196,21 @@ exports.listBySearch = (req, res) => {
     let limit = req.body.limit ? parseInt(req.body.limit) : 100;
     let skip = parseInt(req.body.skip);
     let findArgs = {};
-
+var keyy=""
+var count=0
     // console.log(order, sortBy, limit, skip, req.body.filters);
     // console.log("findArgs", findArgs);
-
+console.log("vfjdnvdf:v")
     for (let key in req.body.filters) {
         if (req.body.filters[key].length > 0) {
+            console.log("efzhlbnzejfz",key)
             if (key === 'price') {
                 // gte -  greater than price [0-10]
                 // lte - less than
                 findArgs[key] = {
                     $gte: req.body.filters[key][0],
                     $lte: req.body.filters[key][1]
-                };
-            } else {
-                findArgs[key] = req.body.filters[key];
-            }
-        }
-    }
-
-    Product.find(findArgs)
+                };    Product.find(findArgs)
         .select('-photo')
         .populate('category')
         .sort([[sortBy, order]])
@@ -228,8 +225,39 @@ exports.listBySearch = (req, res) => {
             res.json({
                 size: data.length,
                 data
-            });
+            });           
+             console.log("produit quiz",data)
+
         });
+            } else if(key=='category') {
+                findArgs[key] = req.body.filters[key];
+                console.log("dfgknfgj:d",findArgs[key],"count",count)
+
+                console.log("dfgknfgj:d",findArgs[key][count])
+                count=count+1;
+                keyy=findArgs[key][count]
+                console.log("key",keyy,findArgs[key][0])
+                Seller.find({jobcategory:findArgs[key][0]},  (err, sellercategoryy) => {
+
+                    if (err || !sellercategoryy) {
+                      return res.status(400).json({
+                        error: "User with that email does not exist. Please signup",
+                      });
+                    }
+                  console.log("category",sellercategoryy)
+                //   res.json({
+                //     size: sellercategoryy.length,
+                //     sellercategoryy
+                // });
+                  
+                  }
+                  
+                    )
+            }
+        }
+    }
+
+
 };
 
 exports.photo = (req, res, next) => {
@@ -282,3 +310,42 @@ exports.decreaseQuantity = (req, res, next) => {
         next();
     });
 };
+
+
+
+// exports.listBySearchh = (req, res) => {
+
+//     // Seller.find()
+//     // .select('-photo')
+//     // .populate('category')
+//     // .sort([[sortBy, order]])
+//     // .skip(skip)
+//     // .limit(limit)
+//     // .exec((err, data) => {
+//     //     if (err) {
+//     //         return res.status(400).json({
+//     //             error: 'Products not found'
+//     //         });
+//     //     }
+//     //     res.json({
+//     //         size: data.length,
+//     //         data
+//     //     });
+//     // });
+//     console.log("categoryy",req.body)
+
+// Seller.find({jobcategory:req.body.job},  (err, sellercategoryy) => {
+
+//     if (err || !sellercategoryy) {
+//       return res.status(400).json({
+//         error: "User with that email does not exist. Please signup",
+//       });
+//     }
+//   console.log("category",sellercategoryy)
+
+  
+//   }
+  
+//     )
+
+// }
