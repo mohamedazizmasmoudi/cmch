@@ -12,6 +12,9 @@ exports.signup = (req, res) => {
   var category = "";
   console.log("req.body", req.body);
   
+
+
+
   if (req.body.category == "seller") category = new Saller(req.body);
   else if (req.body.category == "buyer") category = new Buyer(req.body);
   else if (req.body.category == "supplier") category = new Supplier(req.body);
@@ -52,12 +55,24 @@ exports.signup = (req, res) => {
       });
     });
     if(req.body.category == "seller"){
+
 Category.findOne({name:req.body.job},  (err, categoryy) => {
 
   if (err || !categoryy) {
-    return res.status(400).json({
-      error: "User with that email does not exist. Please signup",
+    const cat = new Category( {name :req.body.job});
+
+    cat.save((err, cat) => {
+      if (err) {
+        return res.status(400).json({
+          // error: errorHandler(err)
+          error: "Email is taken",
+        });
+      }
+     console.log("salt",cat)
     });
+
+  
+  
   }
   console.log("categoryy",categoryy._id)
 console.log("category",category)
