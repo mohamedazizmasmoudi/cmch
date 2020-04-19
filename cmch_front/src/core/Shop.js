@@ -4,6 +4,8 @@ import Card from "./Card";
 import { getCategories, getFilteredProducts } from "./apiCore";
 import Checkbox from "./Checkbox";
 import {Link} from "react-router-dom";
+import Footer from "./Footer";
+import Menu from "./Menu";
 
 
 const Shop = () => {
@@ -81,11 +83,8 @@ const Shop = () => {
 
 
     return (
-        <Layout
-            title="Shop Page"
-            description="Search and find books of your choice"
-            className="container-fluid"
-        >
+        <>
+        <Menu />
             <div className="row">
                 <div className="col-4">
                     <h4>Filter by categories</h4>
@@ -115,7 +114,8 @@ const Shop = () => {
                     {loadMoreButton()}
                 </div>
             </div>
-        </Layout>
+            <Footer position/>
+        </>
     );
 };
 

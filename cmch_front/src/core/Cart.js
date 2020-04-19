@@ -4,6 +4,8 @@ import Layout from './Layout';
 import { getCart } from './cartHelpers';
 import Card from './Card';
 import Checkout from './Checkout';
+import Menu from './Menu';
+import Footer from './Footer';
 
 const Cart = () => {
     const [items, setItems] = useState([]);
@@ -40,12 +42,9 @@ const Cart = () => {
     );
 
     return (
-        <Layout
-            title="Shopping Cart"
-            description="Manage your cart items. Add remove checkout or continue shopping."
-            className="container-fluid"
-        >
-            <div className="row">
+        <>
+        <Menu />
+            <div className="row container">
                 <div className="col-6">{items.length > 0 ? showItems(items) : noItemsMessage()}</div>
 
                 <div className="col-6">
@@ -54,7 +53,8 @@ const Cart = () => {
                     <Checkout products={items} setRun={setRun} run={run} />
                 </div>
             </div>
-        </Layout>
+            <Footer position />
+        </>
     );
 };
 

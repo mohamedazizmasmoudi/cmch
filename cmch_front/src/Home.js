@@ -12,6 +12,7 @@ import img4 from './utils/img/section3-1.png'
 import headerBg from './utils/img/header.png'
 
 import { Link } from "react-router-dom";
+import Footer from "./core/Footer";
 
 
 const options = [
@@ -155,6 +156,7 @@ const Home =  () => {
             <Section1/>
             <Section2/>
             <Section3/>
+            <Footer />
         </div>
     )
 } 

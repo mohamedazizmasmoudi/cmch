@@ -14,31 +14,13 @@ const isActive = (history, path) => {
 
 const Menu = ({ history }) => (
   <>
-      <nav className='header' style={{ display: "flex" }}>
-        <ul style={{ display: "flex" }}>
-          
-          <Link to="/contact">
-            <li className="nav-item nav-item-centred">
-              <a style={{ textDecoration: "none" }} href="">
-                اتصل بنا
-              </a>
-            </li>
-          </Link>
-          
+      <nav className='header' style={{ display: "flex", justifyContent:'space-between' }}>
+        <ul style={{ display: "flex" }} >
           <Link to='/'>
-          <li className="nav-item ">
-            <a style={{ textDecoration: "none" }} href="">
-              عن الشركة
-            </a>
+          <li style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} className="nav-item">
+            <i style={{ color: "black" }} className='fa fa-home'></i>
+            <label>الرئيسية</label>
           </li>
-          </Link>
-
-          <Link to="/">
-            <li className="nav-item nav-item-centred">
-              <a style={{ textDecoration: "none" }} href="">
-                الرئيسية
-              </a>
-            </li>
           </Link>
         </ul>
         <div className="shop">
@@ -55,18 +37,30 @@ const Menu = ({ history }) => (
               )}
 
             <Link to="/cart">
-              <li className="nav-item ">
+              <li className="nav-item " style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                 <i style={{ color: "black" }} className="fa fa-cart-plus"></i>
+                <label>عربة التسوق</label>
               </li>
             </Link>
             <Link to="/shop">
-              <li className="nav-item ">
+              <li className="nav-item " style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                 <i style={{ color: "black" }} className="fa fa-shopping-cart"></i>
+                <label>متجر</label>
               </li>
             </Link>
+            {isAuthenticated() &&
+              (isAuthenticated().type === "seller" && (
+                <Link to="/create/product">
+                  <li style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}} className="nav-item">
+                    <i style={{ color: "black" }} className="fa fa-plus"></i>
+                    <label>إنشاء منتج</label>
+                  </li>
+                </Link>
+              ))}
             <Link to="/user/dashboard">
-              <li className="nav-item ">
+              <li className="nav-item " style={{display: 'flex', alignItems: 'center', flexDirection: 'column'}}>
                 <i style={{ color: "black" }} className="fa fa-user"></i>
+                <label>المستعمل</label>
               </li>
             </Link>
             {isAuthenticated() && (
