@@ -9,7 +9,6 @@ To run the App
 
 ### `nedded Tools To start The App`
 
-- VSCode
 - nodeJs
 - MongoDB
 
