@@ -23,3 +23,5 @@ To run the App
 
 
 ### *PS: you'll find the design of our platform in this link https://xd.adobe.com/view/5043574c-bf6a-492e-78d8-46fcbaf365c4-2672/grid/?fbclid=IwAR02elBir9_X5PLxGy8GzXk3IJKu2oPP7CYwmJ1XcgzRC7GhHLj15OGq2RE or you will find it as pdf here *
+
+https://drive.google.com/file/d/12jzxO3aCnF_wNaWdldCIvJNekfFjKVdc/view?usp=sharing
