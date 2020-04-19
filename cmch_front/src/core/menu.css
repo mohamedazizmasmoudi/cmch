@@ -30,10 +30,7 @@ li:hover{
 li a{
     text-decoration: none;
 }
-.shop{
-    position: absolute;
-    right: 10px;
-}
+
 nav{
     justify-content: center;
     padding-top: 25px;

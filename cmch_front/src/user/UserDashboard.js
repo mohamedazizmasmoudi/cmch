@@ -79,7 +79,7 @@ const Dashboard = ({ match }) => {
 
   const userInfo = () => {
     return (
-      <div style={{height: '100%', left: '10%'}} className="profileSection container">
+      <div style={{height: '100%', left: '10%',width: '75%'}} className="profileSection container">
         <div className="buttonss">
           <button style={{ backgroundColor: "#0f00ff" }}>
             <i style={{ marginRight: 10 }} className="fa fa-facebook"></i>
