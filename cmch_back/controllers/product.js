@@ -245,10 +245,10 @@ console.log("vfjdnvdf:v")
                       });
                     }
                   console.log("category",sellercategoryy)
-                //   res.json({
-                //     size: sellercategoryy.length,
-                //     sellercategoryy
-                // });
+            if(sellercategoryy) return  res.json({
+                    size: sellercategoryy.length,
+                    sellercategoryy
+                });
                   
                   }
                   
@@ -259,6 +259,7 @@ console.log("vfjdnvdf:v")
 
 
 };
+
 
 exports.photo = (req, res, next) => {
     if (req.product.photo.data) {

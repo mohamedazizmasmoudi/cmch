@@ -10,8 +10,6 @@ const { errorHandler } = require("../helpers/dbErrorHandler");
 // using promise
 exports.signup = (req, res) => {
   var category = "";
-  console.log("req.body", req.body);
-  
   if (req.body.category == "seller") category = new Saller(req.body);
   else if (req.body.category == "buyer") category = new Buyer(req.body);
   else if (req.body.category == "supplier") category = new Supplier(req.body);
@@ -25,7 +23,6 @@ exports.signup = (req, res) => {
     }
     console.log(category._id);
     const user = new User(req.body);
-    console.log("fhjnfzejfznfjk", category._id);
     switch (req.body.category) {
       case "seller":
         user.seller = category._id;
@@ -55,30 +52,32 @@ exports.signup = (req, res) => {
 Category.findOne({name:req.body.job},  (err, categoryy) => {
 
   if (err || !categoryy) {
-    return res.status(400).json({
-      error: "User with that email does not exist. Please signup",
-    });
+    const cat = new Category( {name :req.body.job});
+
+  cat.save((err, cat) => {
+    if (err) {
+      return res.status(400).json({
+        // error: errorHandler(err)
+        error: "Email is taken",
+      });
+    }
+  });
+
   }
-  console.log("categoryy",categoryy._id)
-console.log("category",category)
 category.jobcategory=categoryy._id
-category.save((err, categoryyy) => {
+category.save((err) => {
   if (err) {
     return res.status(400).json({
       // error: errorHandler(err)
       error: "Email is taken",
     });
   }
- console.log("salt",categoryyy)
 });
 
 }
 
   )}
-
-
-
-  });
+});
 };
 
 // using async/await

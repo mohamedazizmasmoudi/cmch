@@ -30,10 +30,11 @@ const Shop = () => {
     const loadFilteredResults = newFilters => {
         // console.log(newFilters);
         getFilteredProducts(skip, limit, newFilters).then(data => {
+            console.log(data)
             if (data.error) {
                 setError(data.error);
             } else {
-                setFilteredResults(data.data);
+                setFilteredResults(data.sellercategoryy);
                 setSize(data.size);
                 setSkip(0);
             }
@@ -47,7 +48,7 @@ const Shop = () => {
             if (data.error) {
                 setError(data.error);
             } else {
-                setFilteredResults([...filteredResults, ...data.data]);
+                setFilteredResults([...filteredResults, ...data.sellercategoryy]);
                 setSize(data.size);
                 setSkip(toSkip);
             }
@@ -127,9 +128,11 @@ const Shop = () => {
                 <div className="col-8">
                     <h2 className="mb-4">Products</h2>
                     <div className="row">
-                        {filteredResults.map((product, i) => (
+                        {filteredResults.map((seller, i) => (
                             <div key={i} className="col-4 mb-3">
-                                <Card product={product} />
+                                <div className="card ">
+                                    <div className="card-header card-header-1 ">{seller.name}</div>
+                                </div>
                             </div>
                         ))}
                     </div>
